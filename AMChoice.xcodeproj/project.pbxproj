@@ -12,6 +12,8 @@
 		C69443961EBF124700878B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69443941EBF124700878B99 /* Main.storyboard */; };
 		C69443981EBF124700878B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C69443971EBF124700878B99 /* Assets.xcassets */; };
 		C694439B1EBF124700878B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69443991EBF124700878B99 /* LaunchScreen.storyboard */; };
+		C69443A31EBF139400878B99 /* AMChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69443A21EBF139400878B99 /* AMChoice.swift */; };
+		C69443A51EBF162200878B99 /* VoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69443A41EBF162200878B99 /* VoteModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		C69443971EBF124700878B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C694439A1EBF124700878B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C694439C1EBF124700878B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C69443A21EBF139400878B99 /* AMChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMChoice.swift; sourceTree = "<group>"; };
+		C69443A41EBF162200878B99 /* VoteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				C69443901EBF124700878B99 /* AppDelegate.swift */,
 				C69443921EBF124700878B99 /* ViewController.swift */,
+				C69443A21EBF139400878B99 /* AMChoice.swift */,
+				C69443A41EBF162200878B99 /* VoteModel.swift */,
 				C69443941EBF124700878B99 /* Main.storyboard */,
 				C69443971EBF124700878B99 /* Assets.xcassets */,
 				C69443991EBF124700878B99 /* LaunchScreen.storyboard */,
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C69443931EBF124700878B99 /* ViewController.swift in Sources */,
+				C69443A51EBF162200878B99 /* VoteModel.swift in Sources */,
+				C69443A31EBF139400878B99 /* AMChoice.swift in Sources */,
 				C69443911EBF124700878B99 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

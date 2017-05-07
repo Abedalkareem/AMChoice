@@ -169,7 +169,7 @@ class Item: NSObject,Selectable {
     
     var title: String
     var isSelected: Bool = false
-    var isUserSelectEnable: Bool = false
+    var isUserSelectEnable: Bool = true // set it false if you want to make this item unselectable
     
     init(title:String,isSelected:Bool,isUserSelectEnable:Bool) {
         self.title = title
@@ -189,12 +189,6 @@ class Item: NSObject,Selectable {
         
         return selectedItem
     }
-}
-
-// Two type of cell normal cell and expandaple cell
-@objc enum CellType:NSInteger{
-    case normal
-    case expand
 }
 
 // Two type of selection single and multiple
