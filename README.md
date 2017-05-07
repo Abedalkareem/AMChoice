@@ -11,16 +11,16 @@ Radio Button and check box for iOS
 
 <img src="https://raw.githubusercontent.com/Abedalkareem/AMChoice/master/help1.png"  width="450">
 
-2-You can set the image for select and unselect
+2-Set the image for select and unselect (you can set it programmatically)
 
 <img src="https://raw.githubusercontent.com/Abedalkareem/AMChoice/master/help2.png"  width="450">
 
-3-Add new class that implement ``` Selectable ``` protocol 
+3-Creat new model and implement ``` Selectable ``` protocol , by implementing ``` Selectable ``` protocol you must add three variabel: (title,isSelected,isUserSelectEnable) 
 ```swift
 class VoteModel: NSObject,Selectable {
     var title: String
     var isSelected: Bool = false
-    var isUserSelectEnable: Bool = true
+    var isUserSelectEnable: Bool = true 
     
     init(title:String,isSelected:Bool,isUserSelectEnable:Bool) {
         self.title = title
@@ -30,7 +30,7 @@ class VoteModel: NSObject,Selectable {
 }
 ```
 
-4-Set the data for AMChoice view , the item may come from server or static in your code like i have done
+4-Set the data (items) for AMChoice view, the item may come from server or static in your code like i have done
 ```swift
 amChoiceView.data = myItems 
 ```
