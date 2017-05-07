@@ -29,7 +29,13 @@ class VoteModel: NSObject,Selectable {
 }
 ```
 
-4-You can make any customise to the AMCHoice view , or you can implement the ``` AMChoiceDelegate ``` protocol to get the selected index, see the comment in the code below to know more 
+4-Set the data for AMChoice view , the item may come from server or static in your code like i have done
+```swift
+amChoiceView.data = myItems 
+```
+
+
+You can make any customise to the AMCHoice view (see ``` viewDidLoad ``` ) , or you can implement the ``` AMChoiceDelegate ``` protocol to get the selected index, see the comment in the code below to know more 
 ```swift
 class ViewController: UIViewController,AMChoiceDelegate {
     
