@@ -6,22 +6,89 @@ Radio Button and check box for iOS
 
 <b>Usage</b>
 
-Add UIView to your view controller and set custom class ```swift AMChoice ``` 
+1-Add UIView to your view controller and set custom class ``` AMChoice ``` 
 
+<img src="https://raw.githubusercontent.com/Abedalkareem/AMChoice/master/help1.png"  width="450">
+
+2-You can set the image for select and unselect
+
+<img src="https://raw.githubusercontent.com/Abedalkareem/AMChoice/master/help2.png"  width="450">
+
+3-Add new class that implement ``` Selectable ``` protocol 
 ```swift
-let tapTargetPrompt = MaterialTapTargetPrompt(target: leftBarButton)
-tapTargetPrompt.action = {
-  print("left clicked")
+class VoteModel: NSObject,Selectable {
+    var title: String
+    var isSelected: Bool = false
+    var isUserSelectEnable: Bool = true
+    
+    init(title:String,isSelected:Bool,isUserSelectEnable:Bool) {
+        self.title = title
+        self.isSelected = isSelected
+        self.isUserSelectEnable = isUserSelectEnable
+    }
 }
-tapTargetPrompt.circleColor = UIColor.red
-tapTargetPrompt.primaryText = "Add Home"
-tapTargetPrompt.secondaryText = "Here you can add home"
-tapTargetPrompt.textPostion = .bottomRight
+```
+
+4-You can make any customise to the AMCHoice view , or you can implement the ``` AMChoiceDelegate ``` protocol to get the selected index, see the comment in the code below to know more 
+```swift
+class ViewController: UIViewController,AMChoiceDelegate {
+    
+    
+    @IBOutlet weak var amChoiceView: AMChoice!
+
+    let myItems = [
+        VoteModel(title: "Will smith", isSelected: false, isUserSelectEnable: true),
+        VoteModel(title: "Al pacino", isSelected: false, isUserSelectEnable: true),
+        VoteModel(title: "Abedalkareem", isSelected: false, isUserSelectEnable: true),
+    ]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        amChoiceView.isRightToLeft = false // use it to support right to left language
+        
+        amChoiceView.delegate = self // the delegate used to get the selected item when pressed
+        
+        amChoiceView.data = myItems // fill your item , the item may come from server or static in your code like i have done
+        
+        amChoiceView.selectionType = .single // selection type , single or multiple
+        
+        amChoiceView.cellHeight = 50 // to set cell hight
+        
+        amChoiceView.arrowImage = nil // use ot if you want to add arrow to the cell
+        
+        // you can set the selected and unselected image programmatically
+        amChoiceView.selectedImage = UIImage(named: "selectedItem")
+        amChoiceView.unselectedImage = UIImage(named: "unSelectedItem")
+        
+        
+        
+        
+       
+    }
+    
+    // get the selected item when pressed
+    func didSelectRowAt(indexPath: IndexPath) {
+        print("item at index \(indexPath.row) selected")
+    }
+
+   
+    @IBAction func submit(_ sender: Any) {
+        let selectedItems = amChoiceView.getSelectedItems() as! [VoteModel] // use getSelectedItems to get all selected item
+        print(selectedItems)
+        
+        let selectedItemCommaSeparated = amChoiceView.getSelectedItemsJoined(separator: ",") // use getSelectedItemsJoined to get all selected item joined with separator (if the selection type multiple)
+        print("\n\n\nComma Separated: \n \(selectedItemCommaSeparated)")
+    }
+
+
+}
 ```
 
 <b>Installation</b>
 
-Just add ```MaterialTapTargetPrompt.swift``` in your project
+Just add ```AMChoice.swift``` in your project
 
 
 <b>Note</b>
