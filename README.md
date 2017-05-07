@@ -35,6 +35,7 @@ class VoteModel: NSObject,Selectable {
 amChoiceView.data = myItems 
 ```
 
+<b>More</b>
 
 You can make any customise to the AMCHoice view (see ``` viewDidLoad ``` ) , or you can implement the ``` AMChoiceDelegate ``` protocol to get the selected index, see the comment in the code below to know more 
 ```swift
