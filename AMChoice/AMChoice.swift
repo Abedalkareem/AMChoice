@@ -22,10 +22,13 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
     var selectionType:SelectionType = .single
     var data:[Selectable] = [] {
         didSet{
+            // set selected item index if there is defult selected item
+            if let index = data.index(where: { $0.isSelected }) {
+                lastIndexPath = IndexPath(item: index, section: 0)
+            }
             tableView.reloadData() // when data set reload tableview
         }
     }
-    
     
     
     // cell customize variable

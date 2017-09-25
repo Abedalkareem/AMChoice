@@ -15,7 +15,7 @@ class ViewController: UIViewController,AMChoiceDelegate {
 
     let myItems = [
         VoteModel(title: "Will smith", isSelected: false, isUserSelectEnable: true),
-        VoteModel(title: "Al pacino", isSelected: false, isUserSelectEnable: true),
+        VoteModel(title: "Al pacino", isSelected: true, isUserSelectEnable: true),
         VoteModel(title: "Abedalkareem", isSelected: false, isUserSelectEnable: true),
     ]
     
