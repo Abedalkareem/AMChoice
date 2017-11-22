@@ -3,21 +3,22 @@
 //  SDQ
 //
 //  Created by abedalkareem omreyh on 2/11/17.
-//  Copyright © 2017 DevBatch. All rights reserved.
+//  Copyright © 2017 abedalkareem omreyh. All rights reserved.
 //
-
 import UIKit
 import ObjectiveC
 
 @IBDesignable
 class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
-
+    
     let tableView = UITableView()
     
     // delegate used to get selected item index
     var delegate:AMChoiceDelegate? = nil
     var lastIndexPath:IndexPath?
-
+    var separatorStyle:UITableViewCellSeparatorStyle = .singleLine
+    var font:UIFont?
+    
     // defult selection type is single selection
     var selectionType:SelectionType = .single
     var data:[Selectable] = [] {
@@ -37,7 +38,7 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
     @IBInspectable var unselectedImage:UIImage?
     @IBInspectable var arrowImage:UIImage?
     @IBInspectable var isRightToLeft:Bool = false
-
+    
     
     // MARK: init
     
@@ -49,30 +50,30 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     // draw the tableview
     override func draw(_ rect: CGRect) {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         self.addSubview(tableView)
         tableView.frame = rect
         let backgroundView = UIView(); backgroundView.backgroundColor = UIColor.white
         tableView.backgroundView = backgroundView
         #if TARGET_INTERFACE_BUILDER
             self.data = [Item(title: "Item 1", isSelected: false, isUserSelectEnable: true),
-                        Item(title: "Item 2", isSelected: true, isUserSelectEnable: true),
-                        Item(title: "Item 3", isSelected: false, isUserSelectEnable: true)]
+                         Item(title: "Item 2", isSelected: true, isUserSelectEnable: true),
+                         Item(title: "Item 3", isSelected: false, isUserSelectEnable: true)]
         #endif
-
+        
     }
     
- 
+    
     // MARK: TableView Delegate and datasource
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
@@ -82,13 +83,14 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
         let cell = RadioCell()
         
         let item = data[indexPath.row]
-
+        
         // set the image of radio depend of the status of the item (selected ,unselected)
         cell.imgRadio.image = item.isSelected ? selectedImage : unselectedImage
         
         cell.imgArrow.image = arrowImage
-
+        
         cell.lblTitle.text = item.title
+        cell.lblTitle.font = font ?? cell.lblTitle.font
         
         cell.isRightToLeft = isRightToLeft
         
@@ -96,9 +98,9 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
+        
         return cellHeight
-    
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -127,7 +129,7 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
         tableView.reloadRows(at: [indexPath], with: .automatic)
         
         lastIndexPath = indexPath
-
+        
     }
     
     // MARK: Get selected item functions
@@ -151,7 +153,7 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
         
         return selectedItem
     }
-
+    
     
 }
 
@@ -183,7 +185,7 @@ class Item: NSObject,Selectable {
 }
 
 
- extension Sequence where Iterator.Element == Selectable {
+extension Sequence where Iterator.Element == Selectable {
     func getSelectedItemsJoined(separator:String) -> String{
         
         let selectedItem = self.filter { (item) -> Bool in
@@ -207,7 +209,7 @@ class RadioCell:UITableViewCell{
     var imgArrow:UIImageView = UIImageView()
     
     var isRightToLeft:Bool!
-
+    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
@@ -230,7 +232,8 @@ class RadioCell:UITableViewCell{
         addSubview(imgRadio)
         addSubview(lblTitle)
         addSubview(imgArrow)
-
+        
     }
-   
+    
 }
+
