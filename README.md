@@ -1,5 +1,11 @@
-# AMChoice
+<p align="center">
+ <img src="https://github.com/Abedalkareem/AMChoice/blob/master/amchoice.png" width="300" >
+</p>
+
+
 Radio Button and check box for iOS 
+<br>
+<br>
 
 <b>ScreenShots</b>
 
@@ -108,7 +114,7 @@ I'm going to be very happy if you give me a feedback or advice , thank you
 ```
 The MIT License (MIT)
 
-Copyright (c) 2014 codestergit
+Copyright (c) 2017 Abedalkareem
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
