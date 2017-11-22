@@ -1,5 +1,11 @@
-# AMChoice
+<p align="center">
+ <img src="https://github.com/Abedalkareem/AMChoice/blob/master/amchoice.png" width="300" >
+</p>
+
+
 Radio Button and check box for iOS 
+<br>
+<br>
 
 <b>ScreenShots</b>
 
