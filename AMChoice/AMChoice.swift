@@ -166,8 +166,12 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
     
 }
 
-// AMChoiceDelegate delegate used to inform the delegate that the item selected
+/// The delegate of a AMChoice object must adopt the AMChoiceDelegate protocol.
+/// Method of the protocol allow the delegate to get notfiy when choice selected.
 @objc protocol AMChoiceDelegate: class {
+    /// Called when choice selected
+    ///
+    /// - parameter indexPath: Contain the index of selected choice
     func didSelectRowAt(indexPath: IndexPath)
 }
 
