@@ -4,6 +4,7 @@
 //
 //  Created by abedalkareem omreyh on 2/11/17.
 //  Copyright © 2017 abedalkareem omreyh. All rights reserved.
+//  GitHub: https://github.com/Abedalkareem/AMChoice
 //
 import UIKit
 import ObjectiveC
@@ -11,41 +12,43 @@ import ObjectiveC
 @IBDesignable
 class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
     
-    let tableView = UITableView()
+    private let tableView = UITableView()
     
-    // delegate used to get selected item index
-    var delegate:AMChoiceDelegate? = nil
-    var lastIndexPath:IndexPath?
-    var separatorStyle:UITableViewCellSeparatorStyle = .singleLine
-    var font:UIFont?
+    private var lastIndexPath: IndexPath?
+
+    /// The object that acts as the delegate of the AMChoice.
+    /// The delegate must adopt the AMChoiceDelegate protocol.
+    var delegate: AMChoiceDelegate? = nil
+    //
+    var separatorStyle: UITableViewCellSeparatorStyle = .singleLine
+    var font: UIFont?
     
-    // defult selection type is single selection
-    var selectionType:SelectionType = .single
-    var data:[Selectable] = [] {
-        didSet{
+    /// The type of selection in the choices. `.single` is the default
+    var selectionType: SelectionType = .single
+    
+    /// The choices that will show in the view, all item should adopt the Selectable protocol
+    var data: [Selectable] = [] {
+        didSet {
             // set selected item index if there is defult selected item
-            if let index = data.index(where: { $0.isSelected }) {
+            if let index = data.index(where: { $0.isSelected } ) {
                 lastIndexPath = IndexPath(item: index, section: 0)
             }
-            tableView.reloadData() // when data set reload tableview
+            tableView.reloadData() // when data set, reload tableview
         }
     }
     
     
-    // cell customize variable
-    @IBInspectable var cellHeight:CGFloat = 50
-    @IBInspectable var selectedImage:UIImage?
-    @IBInspectable var unselectedImage:UIImage?
-    @IBInspectable var arrowImage:UIImage?
-    @IBInspectable var isRightToLeft:Bool = false
-    
-    
-    // MARK: init
-    
-    init<T:Selectable>(data:[T]) {
-        super.init(frame: CGRect())
-        self.data = data
-    }
+    // cell customization variables
+    /// The height of the cell the default is 50
+    @IBInspectable var cellHeight: CGFloat = 50
+    /// Selected status image
+    @IBInspectable var selectedImage: UIImage?
+    /// Unselected status image
+    @IBInspectable var unselectedImage: UIImage?
+    /// The arrow image, by default there is no arrow image
+    @IBInspectable var arrowImage: UIImage?
+    /// If your app language right to left you need to set it to true, the default is false
+    @IBInspectable var isRightToLeft: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,7 +58,6 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
         super.init(coder: aDecoder)
     }
     
-    // draw the tableview
     override func draw(_ rect: CGRect) {
         tableView.delegate = self
         tableView.dataSource = self
@@ -74,11 +76,12 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
     
     
     // MARK: TableView Delegate and datasource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    final func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return data.count
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    final func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = RadioCell()
         
@@ -97,13 +100,13 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    final func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return cellHeight
-        
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    final func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         delegate?.didSelectRowAt(indexPath: indexPath)
         
         // if item is unselectable .. return and don't select
@@ -129,13 +132,14 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
         tableView.reloadRows(at: [indexPath], with: .automatic)
         
         lastIndexPath = indexPath
-        
     }
     
     // MARK: Get selected item functions
     
-    // get all selected items
-    func getSelectedItems() -> [Selectable]{
+    /// Get all selected items.
+    ///
+    /// - returns: An array of selectable items that selected.
+    func getSelectedItems() -> [Selectable] {
         
         let selectedItem = data.filter { (item) -> Bool in
             return item.isSelected == true
@@ -144,8 +148,13 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
         return selectedItem
     }
     
-    // get all selected item with with string format
-    func getSelectedItemsJoined(separator:String) -> String{
+    /// Get all selected items as string.
+    ///
+    /// - parameter separator: A string to insert between
+    ///   each of the elements in this sequence. The default separator is the comma.
+    ///
+    /// - returns: A string with selected items.
+    func getSelectedItemsJoined(separator: String = ",") -> String {
         
         let selectedItem = data.filter { (item) -> Bool in
             return item.isSelected == true
@@ -164,9 +173,9 @@ class AMChoice: UIView,UITableViewDelegate,UITableViewDataSource {
 
 // all items should implement Selectable protocol
 @objc protocol Selectable {
-    var isSelected:Bool{ get set }
-    var title:String{ get set }
-    var isUserSelectEnable:Bool{ get set }
+    var isSelected: Bool{ get set }
+    var title: String{ get set }
+    var isUserSelectEnable: Bool{ get set }
     
 }
 
@@ -176,7 +185,7 @@ class Item: NSObject,Selectable {
     var isSelected: Bool = false
     var isUserSelectEnable: Bool = true // set it false if you want to make this item unselectable
     
-    init(title:String,isSelected:Bool,isUserSelectEnable:Bool) {
+    init(title: String, isSelected: Bool, isUserSelectEnable: Bool) {
         self.title = title
         self.isSelected = isSelected
         self.isUserSelectEnable = isUserSelectEnable
@@ -186,7 +195,7 @@ class Item: NSObject,Selectable {
 
 
 extension Sequence where Iterator.Element == Selectable {
-    func getSelectedItemsJoined(separator:String) -> String{
+    func getSelectedItemsJoined(separator: String) -> String {
         
         let selectedItem = self.filter { (item) -> Bool in
             return item.isSelected == true
@@ -197,18 +206,18 @@ extension Sequence where Iterator.Element == Selectable {
 }
 
 // Two type of selection single and multiple
-@objc enum SelectionType:NSInteger{
+@objc enum SelectionType: NSInteger{
     case single
     case multiple
 }
 
 //cell used to show selectable items
-class RadioCell:UITableViewCell{
-    var lblTitle:UILabel = UILabel()
-    var imgRadio:UIImageView = UIImageView()
-    var imgArrow:UIImageView = UIImageView()
+class RadioCell: UITableViewCell{
+    var lblTitle: UILabel = UILabel()
+    var imgRadio: UIImageView = UIImageView()
+    var imgArrow: UIImageView = UIImageView()
     
-    var isRightToLeft:Bool!
+    var isRightToLeft: Bool!
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
