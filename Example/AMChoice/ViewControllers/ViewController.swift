@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AMChoice
 
-class ViewController: UIViewController,AMChoiceDelegate {
+class ViewController: UIViewController, AMChoiceDelegate {
 
 
   @IBOutlet weak var amChoiceView: AMChoice!

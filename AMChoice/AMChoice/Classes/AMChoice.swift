@@ -7,25 +7,24 @@
 //  GitHub: https://github.com/Abedalkareem/AMChoice
 //
 import UIKit
-import ObjectiveC
 
 @IBDesignable
-class AMChoice: UIView, UITableViewDelegate, UITableViewDataSource {
+public class AMChoice: UIView, UITableViewDelegate, UITableViewDataSource {
 
   // MARK: - Properties
 
   /// The object that acts as the delegate of the AMChoice.
   /// The delegate must adopt the AMChoiceDelegate protocol.
-  var delegate: AMChoiceDelegate? = nil
+  public var delegate: AMChoiceDelegate? = nil
   //
-  var separatorStyle: UITableViewCell.SeparatorStyle = .singleLine
-  var font: UIFont?
+  public var separatorStyle: UITableViewCell.SeparatorStyle = .singleLine
+  public var font: UIFont?
 
   /// The type of selection in the choices. `.single` is the default
-  var selectionType: SelectionType = .single
+  public var selectionType: SelectionType = .single
 
   /// The choices that will show in the view, all item should adopt the Selectable protocol
-  var data: [Selectable] = [] {
+  public var data: [Selectable] = [] {
     didSet {
       // set selected item index if there is defult selected item
       if let index = data.firstIndex(where: { $0.isSelected } ) {
@@ -38,15 +37,15 @@ class AMChoice: UIView, UITableViewDelegate, UITableViewDataSource {
 
   // cell customization variables
   /// The height of the cell the default is 50
-  @IBInspectable var cellHeight: CGFloat = 50
+  @IBInspectable public var cellHeight: CGFloat = 50
   /// Selected status image
-  @IBInspectable var selectedImage: UIImage?
+  @IBInspectable public var selectedImage: UIImage?
   /// Unselected status image
-  @IBInspectable var unselectedImage: UIImage?
+  @IBInspectable public var unselectedImage: UIImage?
   /// The arrow image, by default there is no arrow image
-  @IBInspectable var arrowImage: UIImage?
+  @IBInspectable public var arrowImage: UIImage?
   /// If your app language right to left you need to set it to true, the default is false
-  @IBInspectable var isRightToLeft: Bool = false
+  @IBInspectable public var isRightToLeft: Bool = false
 
   // MARK: - Private properties
 
@@ -92,18 +91,18 @@ class AMChoice: UIView, UITableViewDelegate, UITableViewDataSource {
     ])
   }
 
-  override func layoutSubviews() {
+  override public func layoutSubviews() {
     super.layoutSubviews()
     tableView.separatorStyle = .none
   }
 
   // MARK: TableView Delegate and datasource
 
-  final func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return data.count
   }
 
-  final func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! RadioCell
     let item = data[indexPath.row]
     cell.setupWith(item,
@@ -114,12 +113,12 @@ class AMChoice: UIView, UITableViewDelegate, UITableViewDataSource {
     return cell
   }
 
-  final func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
     return cellHeight
   }
 
-  final func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     delegate?.didSelectRowAt(indexPath: indexPath)
 
@@ -153,7 +152,7 @@ class AMChoice: UIView, UITableViewDelegate, UITableViewDataSource {
   /// Get all selected items.
   ///
   /// - returns: An array of selectable items that selected.
-  func getSelectedItems() -> [Selectable] {
+  public func getSelectedItems() -> [Selectable] {
 
     let selectedItem = data.filter { (item) -> Bool in
       return item.isSelected == true
@@ -168,7 +167,7 @@ class AMChoice: UIView, UITableViewDelegate, UITableViewDataSource {
   ///   each of the elements in this sequence. The default separator is the comma.
   ///
   /// - returns: A string with selected items.
-  func getSelectedItemsJoined(separator: String = ",") -> String {
+  public func getSelectedItemsJoined(separator: String = ",") -> String {
     return data.filter { $0.isSelected}
       .map{String($0.title)}
       .joined(separator: separator)
@@ -178,7 +177,7 @@ class AMChoice: UIView, UITableViewDelegate, UITableViewDataSource {
 
 /// The delegate of a AMChoice object must adopt the AMChoiceDelegate protocol.
 /// Method of the protocol allow the delegate to get notfiy when choice selected.
-@objc protocol AMChoiceDelegate: class {
+@objc public protocol AMChoiceDelegate: AnyObject {
   /// Called when choice selected
   ///
   /// - parameter indexPath: Contain the index of selected choice
@@ -186,18 +185,17 @@ class AMChoice: UIView, UITableViewDelegate, UITableViewDataSource {
 }
 
 // all items should implement Selectable protocol
-@objc protocol Selectable {
+@objc public protocol Selectable {
   var isSelected: Bool{ get set }
   var title: String{ get set }
   var isUserSelectEnable: Bool{ get set }
-
 }
 
-class Item: NSObject, Selectable {
+public class Item: NSObject, Selectable {
 
-  var title: String
-  var isSelected: Bool = false
-  var isUserSelectEnable: Bool = true // set it false if you want to make this item unselectable
+  public var title: String
+  public var isSelected: Bool = false
+  public var isUserSelectEnable: Bool = true // set it false if you want to make this item unselectable
 
   init(title: String, isSelected: Bool, isUserSelectEnable: Bool) {
     self.title = title
@@ -208,7 +206,7 @@ class Item: NSObject, Selectable {
 }
 
 /// Two type of selection single and multiple
-@objc enum SelectionType: NSInteger{
+@objc public enum SelectionType: NSInteger {
   case single
   case multiple
 }

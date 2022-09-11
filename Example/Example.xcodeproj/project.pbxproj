@@ -12,20 +12,35 @@
 		C69443961EBF124700878B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69443941EBF124700878B99 /* Main.storyboard */; };
 		C69443981EBF124700878B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C69443971EBF124700878B99 /* Assets.xcassets */; };
 		C694439B1EBF124700878B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69443991EBF124700878B99 /* LaunchScreen.storyboard */; };
-		C69443A31EBF139400878B99 /* AMChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69443A21EBF139400878B99 /* AMChoice.swift */; };
 		C69443A51EBF162200878B99 /* VoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69443A41EBF162200878B99 /* VoteModel.swift */; };
+		C6A7531728CE0B9C00E5ED20 /* AMChoice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A7531628CE0B9C00E5ED20 /* AMChoice.framework */; };
+		C6A7531828CE0B9C00E5ED20 /* AMChoice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6A7531628CE0B9C00E5ED20 /* AMChoice.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C6A7531928CE0B9C00E5ED20 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C6A7531828CE0B9C00E5ED20 /* AMChoice.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		C694438D1EBF124600878B99 /* AMChoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMChoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C694438D1EBF124600878B99 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C69443901EBF124700878B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C69443921EBF124700878B99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C69443951EBF124700878B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C69443971EBF124700878B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C694439A1EBF124700878B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C694439C1EBF124700878B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C69443A21EBF139400878B99 /* AMChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMChoice.swift; sourceTree = "<group>"; };
 		C69443A41EBF162200878B99 /* VoteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteModel.swift; sourceTree = "<group>"; };
+		C6A7531628CE0B9C00E5ED20 /* AMChoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AMChoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6A7531728CE0B9C00E5ED20 /* AMChoice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,13 +63,12 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		C63A91D923F663C800CB0FE2 /* Classes */ = {
+		C63A91D923F663C800CB0FE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				C69443A41EBF162200878B99 /* VoteModel.swift */,
-				C69443A21EBF139400878B99 /* AMChoice.swift */,
 			);
-			path = Classes;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C63A91DA23F663D600CB0FE2 /* SupportFiles */ = {
@@ -71,13 +86,14 @@
 			children = (
 				C694438F1EBF124600878B99 /* AMChoice */,
 				C694438E1EBF124600878B99 /* Products */,
+				C6A7531528CE0B9C00E5ED20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		C694438E1EBF124600878B99 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C694438D1EBF124600878B99 /* AMChoice.app */,
+				C694438D1EBF124600878B99 /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				C69443901EBF124700878B99 /* AppDelegate.swift */,
-				C63A91D923F663C800CB0FE2 /* Classes */,
+				C63A91D923F663C800CB0FE2 /* Models */,
 				C63A91D823F663B600CB0FE2 /* ViewControllers */,
 				C63A91DA23F663D600CB0FE2 /* SupportFiles */,
 				C694439C1EBF124700878B99 /* Info.plist */,
@@ -94,24 +110,33 @@
 			path = AMChoice;
 			sourceTree = "<group>";
 		};
+		C6A7531528CE0B9C00E5ED20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6A7531628CE0B9C00E5ED20 /* AMChoice.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C694438C1EBF124600878B99 /* AMChoice */ = {
+		C694438C1EBF124600878B99 /* Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C694439F1EBF124700878B99 /* Build configuration list for PBXNativeTarget "AMChoice" */;
+			buildConfigurationList = C694439F1EBF124700878B99 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
 				C69443891EBF124600878B99 /* Sources */,
 				C694438A1EBF124600878B99 /* Frameworks */,
 				C694438B1EBF124600878B99 /* Resources */,
+				C6A7531928CE0B9C00E5ED20 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = AMChoice;
+			name = Example;
 			productName = AMChoice;
-			productReference = C694438D1EBF124600878B99 /* AMChoice.app */;
+			productReference = C694438D1EBF124600878B99 /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -121,7 +146,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = abedalkareem;
 				TargetAttributes = {
 					C694438C1EBF124600878B99 = {
@@ -131,7 +156,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C69443881EBF124600878B99 /* Build configuration list for PBXProject "AMChoice" */;
+			buildConfigurationList = C69443881EBF124600878B99 /* Build configuration list for PBXProject "Example" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -144,7 +169,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C694438C1EBF124600878B99 /* AMChoice */,
+				C694438C1EBF124600878B99 /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -169,7 +194,6 @@
 			files = (
 				C69443931EBF124700878B99 /* ViewController.swift in Sources */,
 				C69443A51EBF162200878B99 /* VoteModel.swift in Sources */,
-				C69443A31EBF139400878B99 /* AMChoice.swift in Sources */,
 				C69443911EBF124700878B99 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +246,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -246,7 +271,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -281,6 +306,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -299,7 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -313,6 +339,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H3MRF55H66;
 				INFOPLIST_FILE = AMChoice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abedalkareem.AMChoice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -326,6 +353,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H3MRF55H66;
 				INFOPLIST_FILE = AMChoice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abedalkareem.AMChoice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -336,7 +364,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C69443881EBF124600878B99 /* Build configuration list for PBXProject "AMChoice" */ = {
+		C69443881EBF124600878B99 /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C694439D1EBF124700878B99 /* Debug */,
@@ -345,7 +373,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C694439F1EBF124700878B99 /* Build configuration list for PBXNativeTarget "AMChoice" */ = {
+		C694439F1EBF124700878B99 /* Build configuration list for PBXNativeTarget "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C69443A01EBF124700878B99 /* Debug */,

@@ -14,17 +14,17 @@ A custom radio buttons and check boxs for iOS
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/Abedalkareem/AMChoice/master/Screen%20Shot.png"  width="350">
+<img src="https://raw.githubusercontent.com/Abedalkareem/AMChoice/master/screenshots/Screen%20Shot.png"  width="350">
 
 ## Usage
 
 1-Add a `UIView` to your view controller and set the custom class to `AMChoice` .  
 
-<img src="https://raw.githubusercontent.com/Abedalkareem/AMChoice/master/help1.png"  width="450">
+<img src="https://raw.githubusercontent.com/Abedalkareem/AMChoice/master/screenshots/help1.png"  width="450">
 
 2-Set the images for select and unselect statuses *(You can set it programmatically also)*.  
 
-<img src="https://raw.githubusercontent.com/Abedalkareem/AMChoice/master/help2.png"  width="450">
+<img src="https://raw.githubusercontent.com/Abedalkareem/AMChoice/master/screenshots/help2.png"  width="450">
 
 3-Creat a new model and implement `Selectable` protocol, by implementing `Selectable` protocol you must add three variables (`title`, `isSelected`, and `isUserSelectEnable`).   
 ```swift

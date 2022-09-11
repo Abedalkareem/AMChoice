@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AMChoice
 
-class VoteModel: NSObject,Selectable {
+class VoteModel: NSObject, Selectable {
     var title: String
     var isSelected: Bool = false
     var isUserSelectEnable: Bool = true
