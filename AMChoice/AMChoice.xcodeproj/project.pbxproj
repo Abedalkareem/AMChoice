@@ -10,7 +10,8 @@
 		C633A48F28CE02A800BEEE70 /* AMChoice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C633A48628CE02A700BEEE70 /* AMChoice.framework */; };
 		C633A49428CE02A800BEEE70 /* AMChoiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C633A49328CE02A800BEEE70 /* AMChoiceTests.swift */; };
 		C633A49528CE02A800BEEE70 /* AMChoice.h in Headers */ = {isa = PBXBuildFile; fileRef = C633A48928CE02A700BEEE70 /* AMChoice.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C6A7530C28CE092000E5ED20 /* AMChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A7530928CE092000E5ED20 /* AMChoice.swift */; };
+		C6A7530C28CE092000E5ED20 /* AMChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A7530928CE092000E5ED20 /* AMChoiceView.swift */; };
+		C6A7531D28CE0F9D00E5ED20 /* RadioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A7531C28CE0F9D00E5ED20 /* RadioTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +29,8 @@
 		C633A48928CE02A700BEEE70 /* AMChoice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMChoice.h; sourceTree = "<group>"; };
 		C633A48E28CE02A800BEEE70 /* AMChoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AMChoiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C633A49328CE02A800BEEE70 /* AMChoiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMChoiceTests.swift; sourceTree = "<group>"; };
-		C6A7530928CE092000E5ED20 /* AMChoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMChoice.swift; sourceTree = "<group>"; };
+		C6A7530928CE092000E5ED20 /* AMChoiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMChoiceView.swift; sourceTree = "<group>"; };
+		C6A7531C28CE0F9D00E5ED20 /* RadioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +98,8 @@
 		C6A7530728CE092000E5ED20 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C6A7530928CE092000E5ED20 /* AMChoice.swift */,
+				C6A7530928CE092000E5ED20 /* AMChoiceView.swift */,
+				C6A7531C28CE0F9D00E5ED20 /* RadioTableViewCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -119,6 +122,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C633A49828CE02A800BEEE70 /* Build configuration list for PBXNativeTarget "AMChoice" */;
 			buildPhases = (
+				C6A7531A28CE0CC400E5ED20 /* Swiftlint */,
 				C633A48128CE02A700BEEE70 /* Headers */,
 				C633A48228CE02A700BEEE70 /* Sources */,
 				C633A48328CE02A700BEEE70 /* Frameworks */,
@@ -206,12 +210,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C6A7531A28CE0CC400E5ED20 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint > /dev/null; then\n  swiftlint --config ../.swiftlint.yml\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C633A48228CE02A700BEEE70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6A7530C28CE092000E5ED20 /* AMChoice.swift in Sources */,
+				C6A7530C28CE092000E5ED20 /* AMChoiceView.swift in Sources */,
+				C6A7531D28CE0F9D00E5ED20 /* RadioTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

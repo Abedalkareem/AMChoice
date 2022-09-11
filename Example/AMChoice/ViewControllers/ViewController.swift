@@ -11,20 +11,18 @@ import AMChoice
 
 class ViewController: UIViewController, AMChoiceDelegate {
 
-
-  @IBOutlet weak var amChoiceView: AMChoice!
+  @IBOutlet private weak var amChoiceView: AMChoiceView!
 
   let myItems = [
     VoteModel(title: "Will smith", isSelected: false, isUserSelectEnable: true),
     VoteModel(title: "Al pacino", isSelected: true, isUserSelectEnable: true),
-    VoteModel(title: "Abedalkareem", isSelected: false, isUserSelectEnable: true),
+    VoteModel(title: "Abedalkareem", isSelected: false, isUserSelectEnable: true)
   ]
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-
-    amChoiceView.isRightToLeft = false // use it to support right to left language
+    amChoiceView.isRightToLeft = false // use it to support right to left language.
 
     amChoiceView.delegate = self // the delegate used to get the selected item when pressed
 
@@ -37,8 +35,8 @@ class ViewController: UIViewController, AMChoiceDelegate {
     amChoiceView.arrowImage = nil // use ot if you want to add arrow to the cell
 
     // you can set the selected and unselected image programmatically
-    amChoiceView.selectedImage = UIImage(named: "selectedItem")
-    amChoiceView.unselectedImage = UIImage(named: "unSelectedItem")
+    amChoiceView.selectedImage = #imageLiteral(resourceName: "selectedItem")
+    amChoiceView.unselectedImage = #imageLiteral(resourceName: "unSelectedItem")
   }
 
   // get the selected item when pressed
@@ -46,15 +44,12 @@ class ViewController: UIViewController, AMChoiceDelegate {
     print("item at index \(indexPath.row) selected")
   }
 
-
   @IBAction func submit(_ sender: Any) {
-    let selectedItems = amChoiceView.getSelectedItems() as! [VoteModel] // use getSelectedItems to get all selected item
-    print(selectedItems)
+    let selectedItems = amChoiceView.getSelectedItems() as? [VoteModel] // use getSelectedItems to get all selected item
+    print(selectedItems ?? [])
 
-    let selectedItemCommaSeparated = amChoiceView.getSelectedItemsJoined(separator: ",") // use getSelectedItemsJoined to get all selected item joined with separator (if the selection type multiple)
+    // use getSelectedItemsJoined to get all selected item joined with separator (if the selection type multiple)
+    let selectedItemCommaSeparated = amChoiceView.getSelectedItemsJoined(separator: ",")
     print("\n\n\nComma Separated: \n \(selectedItemCommaSeparated)")
   }
-
-
 }
-
